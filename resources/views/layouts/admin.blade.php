@@ -15,7 +15,7 @@
     <link href="{{asset ('assets/css/light-bootstrap-dashboard.css?v=2.0.0') }} " rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{asset ('assets/css/demo.css') }}" rel="stylesheet" />
-
+    @livewireStyles
 </head>
 <body>
 
@@ -70,6 +70,7 @@
             demo.showNotification();
 
         });
+        
     </script>
-
+@livewireScripts
 </html>

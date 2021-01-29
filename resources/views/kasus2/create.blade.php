@@ -16,6 +16,10 @@
                     <div class="card-body">
                         <form action="{{ route('kasus2.store') }}" method="POST">
                         @csrf
+                        <div class="col">
+                                @livewire('kasus1')
+                               
+                            </div>
                             <div class="form-group">
                                 <label for="">RW</label>
                                 <select name="id_rw" class="form-control">

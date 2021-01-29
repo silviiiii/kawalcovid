@@ -77,6 +77,6 @@ class ProvinsiController extends Controller
     {
         $provinsi = Provinsi::findOrFail($id)->delete();
         return redirect()->route('provinsi.index')
-                ->with(['message'=>'Provinsi berhasil dihapus']);
+                ->with(['message'=>'Data Provinsi berhasil dihapus']);
     }
 }

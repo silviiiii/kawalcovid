@@ -2,8 +2,10 @@
 namespace App\Http\Controllers;
 use App\Models\Kasus2;
 use App\Models\RW;
+use Livewire\Component;
 use App\Http\Controllers\DB;
 use Illuminate\Http\Request;
+
 class Kasus2Controller extends Controller
 {
     public function __construct()
@@ -23,7 +25,7 @@ class Kasus2Controller extends Controller
         $rw = RW::all();
         return view('kasus2.create', compact('kasus2','rw'));
     }
-
+    
     public function store(Request $request)
     {
         $request->validate([
@@ -35,7 +37,6 @@ class Kasus2Controller extends Controller
             'jml_meninggal.required' => 'Data tidak boleh kosong',
             'jml_sembuh.required' => 'Data tidak boleh kosong'
         ]);
-
         $kasus2 = new Kasus2;
         $kasus2->jml_positif = $request->jml_positif;
         $kasus2->jml_meninggal = $request->jml_meninggal;
@@ -60,7 +61,7 @@ class Kasus2Controller extends Controller
         $rw = RW::all();
         return view('kasus2.edit', compact('kasus2', 'rw'));
     }
-
+    
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -72,7 +73,6 @@ class Kasus2Controller extends Controller
             'jml_meninggal.required' => 'Data tidak boleh kosong',
             'jml_sembuh.required' => 'Data tidak boleh kosong'
         ]);
-
         $kasus2 = Kasus2::findOrFail($id);
         $kasus2->jml_positif = $request->jml_positif;
         $kasus2->jml_meninggal = $request->jml_meninggal;
@@ -83,17 +83,9 @@ class Kasus2Controller extends Controller
         return redirect()->route('kasus2.index')
                 ->with(['message'=>'Data Kasus berhasil diubah !']);
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
+    
     public function destroy($id)
     {
-        //
         $kasus2 = Kasus2::find($id)->delete();
          //Alert::success('Selamat Datang !')->persistent('Confirm');
         return redirect()->route('kasus2.index')->with('success','User deleted successfully');
