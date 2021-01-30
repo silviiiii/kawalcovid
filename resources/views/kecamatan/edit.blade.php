@@ -19,7 +19,7 @@
                         @csrf
                             <div class="form-group">
                                 <label for="">Nama Provinsi</label>
-                                <input type="text" name="nama_provinsi" class="form-control" id="exampleInputPassword1" value="{{$kecamatan->kota->provinsi->nama_provinsi}}" readonly>  
+                                <input type="text" name="nama_provinsi" class="form-control" id="exampleInputPassword1" value="{{$kecamatan->kota->provinsi->nama_provinsi}}" require>  
                             </div>
                             <div class="form-group">
                                 <label for="">Nama Kota</label>

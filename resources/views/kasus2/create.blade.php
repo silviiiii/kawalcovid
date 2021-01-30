@@ -16,18 +16,12 @@
                     <div class="card-body">
                         <form action="{{ route('kasus2.store') }}" method="POST">
                         @csrf
-                        <div class="col">
-                                @livewire('kasus1')
-                               
+                            <div class="col">
+                                <livewire:kasus1 />
                             </div>
-                            <div class="form-group">
-                                <label for="">RW</label>
-                                <select name="id_rw" class="form-control">
-                                    @foreach ($rw as $data)
-                                        <option value="{{$data->id}}">{{$data->nama}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                            
+                                <center><h2><p>-- Data Kasus --</p></h2></center>
+                            
                             <div class="form-group">
                                 <label for="">Jumlah Positif</label>
                                 <input type="text"name="jml_positif" class="form-control" id="exampleInputEmail1"  placeholder="Jumlah Positif">
@@ -53,7 +47,10 @@
                                 <label for="">Tanggal</label>
                                 <input type="date" name="tanggal" class="form-control" id="exampleInputEmail1"  placeholder="Jumlah Sembuh">
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <a href="{{url()->previous()}}" class="btn btn-danger">Kembali</a>
+                            <div class="float-right">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
                         </form>
                     </div>
                 </div>

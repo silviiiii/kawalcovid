@@ -19,15 +19,15 @@
                         @csrf
                             <div class="form-group">
                                 <label for="">Nama Provinsi</label>
-                                <input type="text" name="nama_provinsi" class="form-control" id="exampleInputPassword1" value="{{$rw->kelurahan->kecamatan->kota->provinsi->nama_provinsi}}" readonly>  
+                                <input type="text" name="nama_provinsi" class="form-control" id="exampleInputPassword1" value="{{$rw->kelurahan->kecamatan->kota->provinsi->nama_provinsi}}" require>  
                             </div>
                             <div class="form-group">
                                 <label for="">Nama Kota / Kabupaten</label>
-                                <input type="text" name="nama_kota" class="form-control" id="exampleInputPassword1" value="{{$rw->kelurahan->kecamatan->kota->nama_kota}}" readonly>  
+                                <input type="text" name="nama_kota" class="form-control" id="exampleInputPassword1" value="{{$rw->kelurahan->kecamatan->kota->nama_kota}}" require>  
                             </div>
                             <div class="form-group">
                                 <label for="">Nama Kecamatan</label>
-                                <input type="text" name="nama_kecamatan" class="form-control" id="exampleInputPassword1" value="{{$rw->kelurahan->kecamatan->nama_kecamatan}}" readonly>  
+                                <input type="text" name="nama_kecamatan" class="form-control" id="exampleInputPassword1" value="{{$rw->kelurahan->kecamatan->nama_kecamatan}}" require>  
                             </div>
                             <div class="form-group">
                                 <label for="">Nama Kelurahan</label>
