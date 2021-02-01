@@ -1,9 +1,11 @@
 <?php
+
 namespace App\Http\Controllers;
 use App\Models\RW;
 use App\Models\Kelurahan;
 use App\Http\Controllers\DB;
 use Illuminate\Http\Request;
+
 class RwController extends Controller
 {
     public function __construct()
@@ -16,6 +18,7 @@ class RwController extends Controller
         $rw = RW::with('kelurahan')->get();
         return view('rw.index', compact('rw'));
     }
+
     public function create()
     {
         $rw = RW::all();
@@ -23,13 +26,13 @@ class RwController extends Controller
         return view('rw.create', compact('rw','kelurahan'));
     }
 
+    
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required|max:11|unique:r_w_s'
+            'nama' => 'required|max:11'
         ], [
-            'nama.required' => 'Nama RW tidak boleh kosong',
-            'nama.unique' => 'Nama RW sudah terdaftar'
+            'nama.required' => 'Nama RW tidak boleh kosong'
         ]);
 
         $rw = new RW;
@@ -39,6 +42,7 @@ class RwController extends Controller
         return redirect()->route('rw.index')
                 ->with(['message'=>'Data RW berhasil dibuat !']);
     }
+
     
     public function show($id)
     {
@@ -46,6 +50,7 @@ class RwController extends Controller
         $kelurahan = Kelurahan::all();
         return view('rw.show', compact('rw','kelurahan'));
     }
+
     
     public function edit($id)
     {
@@ -54,6 +59,7 @@ class RwController extends Controller
         return view('rw.edit', compact('rw', 'kelurahan'));
     }
 
+    
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -69,6 +75,7 @@ class RwController extends Controller
         return redirect()->route('rw.index')
                 ->with(['message'=>'Data RW berhasil diubah !']);
     }
+
     
     public function destroy($id)
     {

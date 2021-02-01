@@ -61,31 +61,31 @@ class Kasus1 extends Component
     {
         return view('livewire.kasus1');
     }
-    public function updatedSelectedpprovinsi($provinsi)
+    public function updatedpprovinsi($provinsi)
     {
         $this->kota = kota::where('id_provinsi', $provinsi)->get();
-        $this->selectedpkota = NULL;
-        $this->selectedpkecamatan = NULL;
-        $this->selectedpkelurahan = NULL;
-        $this->selectedprw = NULL;
+        $this->pkota = NULL;
+        $this->pkecamatan = NULL;
+        $this->pkelurahan = NULL;
+        $this->prw = NULL;
     }
 
-    public function updatedSelectedpkota($kota)
+    public function updatedpkota($kota)
     {
         $this->kecamatan = kecamatan::where('id_kota', $kota)->get();
-        $this->selectedpkecamatan = NULL;
-        $this->selectedpkelurahan = NULL;
-        $this->selectedprw = NULL;
+        $this->pkecamatan = NULL;
+        $this->pkelurahan = NULL;
+        $this->prw = NULL;
     }
-    public function updatedSelectedpkecamatan($kecamatan)
+    public function updatedpkecamatan($kecamatan)
     {
         $this->kelurahan = kelurahan::where('id_kecamatan', $kecamatan)->get();
-        $this->selectedpkelurahan = NULL;
-        $this->selectedprw = NULL;
+        $this->pkelurahan = NULL;
+        $this->prw = NULL;
     }
-    public function updatedSelectedpkelurahan($kelurahan)
+    public function updatedpkelurahan($kelurahan)
     {
         $this->rw = rw::where('id_kelurahan', $kelurahan)->get();
-        $this->selectedprw = NULL;
+        $this->prw = NULL;
     }    
 }

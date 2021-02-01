@@ -1,8 +1,12 @@
 <?php
+
 namespace App\Http\Controllers;
 use App\Models\Kasus2;
 use App\Models\RW;
-use Livewire\Component;
+use App\Models\Kelurahan;
+use App\Models\Kecamatan;
+use App\Models\Kota;
+use App\Models\Provinsi;
 use App\Http\Controllers\DB;
 use Illuminate\Http\Request;
 
@@ -18,13 +22,15 @@ class Kasus2Controller extends Controller
         $kasus2 = Kasus2::with('rw')->get();
         return view('kasus2.index', compact('kasus2'));
     }
+
     
     public function create()
     {
-        $kasus2 = Kasus2::all();
-        $rw = RW::all();
-        return view('kasus2.create', compact('kasus2','rw'));
+            $kasus2 = Kasus2::all();
+            $rw = RW::all();
+            return view('kasus2.create', compact('kasus2','rw'));
     }
+
     
     public function store(Request $request)
     {
@@ -37,6 +43,7 @@ class Kasus2Controller extends Controller
             'jml_meninggal.required' => 'Data tidak boleh kosong',
             'jml_sembuh.required' => 'Data tidak boleh kosong'
         ]);
+
         $kasus2 = new Kasus2;
         $kasus2->jml_positif = $request->jml_positif;
         $kasus2->jml_meninggal = $request->jml_meninggal;
@@ -47,6 +54,7 @@ class Kasus2Controller extends Controller
         return redirect()->route('kasus2.index')
                 ->with(['message'=>'Data Kasus berhasil dibuat !']);
     }
+
     
     public function show($id)
     {
@@ -54,13 +62,19 @@ class Kasus2Controller extends Controller
         $rw = RW::all();
         return view('kasus2.show', compact('kasus2', 'rw'));
     }
+
     
     public function edit($id)
     {
         $kasus2 = Kasus2::findOrFail($id);
         $rw = RW::all();
-        return view('kasus2.edit', compact('kasus2', 'rw'));
+        $provinsi = Provinsi::all();
+        $kota = Kota::all();
+        $kecamatan = Kecamatan::all();
+        $kelurahan = Kelurahan::all();
+        return view('kasus2.edit', compact('kasus2', 'rw','provinsi','kota','kecamatan','kelurahan'));
     }
+
     
     public function update(Request $request, $id)
     {
@@ -73,6 +87,7 @@ class Kasus2Controller extends Controller
             'jml_meninggal.required' => 'Data tidak boleh kosong',
             'jml_sembuh.required' => 'Data tidak boleh kosong'
         ]);
+
         $kasus2 = Kasus2::findOrFail($id);
         $kasus2->jml_positif = $request->jml_positif;
         $kasus2->jml_meninggal = $request->jml_meninggal;
@@ -83,6 +98,7 @@ class Kasus2Controller extends Controller
         return redirect()->route('kasus2.index')
                 ->with(['message'=>'Data Kasus berhasil diubah !']);
     }
+
     
     public function destroy($id)
     {
