@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Post;
 
 class PostsController extends Controller
 {
@@ -81,7 +81,7 @@ class PostsController extends Controller
         }
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
         //validate data
         $validator = Validator::make($request->all(), [
@@ -104,11 +104,10 @@ class PostsController extends Controller
 
         } else {
 
-            $post = Post::whereId($request->input('id'))->update([
-                'title'     => $request->input('title'),
-                'content'   => $request->input('content'),
-            ]);
-
+            $post = Post::findOrFail($id);
+            $post->title = $request->title;
+            $post->content = $request->content;
+            $post->save();
 
             if ($post) {
                 return response()->json([

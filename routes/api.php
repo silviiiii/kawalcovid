@@ -3,7 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiController;
-use App\Http\Controllers\PostsController;
+
+use App\Http\Controllers\ProvinsiController;
+
 
 
 /*
@@ -22,6 +24,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::get('provinsi', [ApiController::class,'provinsi']);
 Route::get('provinsi/(id)', [ApiController::class,'provinsixkota']);
+
+Route::get('/provinsi', [ProvinsiController::class, 'index']);
+Route::post('/provinsi', [ProvinsiController::class, 'store']);
+Route::get('/provinsi/{id}', [ProvinsiController::class, 'show']);
+Route::post('/provinsi/update/{id}', [ProvinsiController::class, 'update']);
+Route::delete('/provinsi/{id}', [ProvinsiController::class, 'destroy']);
 
 Route::get('/posts', [PostsController::class,'index']);
 Route::post('/posts', [PostsController::class,'store']);
