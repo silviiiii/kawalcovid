@@ -17,24 +17,9 @@
                         <form action="{{ route('kasus2.update', $kasus2->id) }}" method="POST">
                         <input type="hidden" name="_method" value="put">
                         @csrf
+                            
                             <div class="form-group">
-                                <label for="">Nama Provinsi</label>
-                                <input type="text" name="nama_provinsi" class="form-control" id="exampleInputPassword1" value="{{$kasus2->rw->kelurahan->kecamatan->kota->provinsi->nama_provinsi}}" require>  
-                            </div>
-                            <div class="form-group">
-                                <label for="">Nama Kota / Kabupaten</label>
-                                <input type="text" name="nama_kota" class="form-control" id="exampleInputPassword1" value="{{$kasus2->rw->kelurahan->kecamatan->kota->nama_kota}}" require>  
-                            </div>
-                            <div class="form-group">
-                                <label for="">Nama Kecamatan</label>
-                                <input type="text" name="nama_kecamatan" class="form-control" id="exampleInputPassword1" value="{{$kasus2->rw->kelurahan->kecamatan->nama_kecamatan}}" require>  
-                            </div>
-                            <div class="form-group">
-                                <label for="">Nama Kelurahan</label>
-                                <input type="text" name="nama_kelurahan" class="form-control" id="exampleInputPassword1" value="{{$kasus2->rw->kelurahan->nama_kelurahan}}" require>  
-                            </div>
-                            <div class="form-group">
-                                <label for="">RW</label>
+                                <label for="">Nama RW</label>
                                 <select name="id_rw" class="form-control">
                                     @foreach ($rw as $data)
                                         <option value="{{ $data->id }}" {{ $data->id == $kasus2->id_rw ? "selected" : "" }} >
